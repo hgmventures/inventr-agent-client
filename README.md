@@ -82,7 +82,6 @@ Renders the chatbot interface. The `options` object can include:
 - `collapse`: If true, the chatbot starts in a collapsed state.
 - `dev`: If true, the chatbot connects to the development server.
 - `id` or `agentAccessKey`: The access key for the agent.
-- `render`: If false, the chatbot does not render immediately.
 
 These options can also be passed as URL parameters when loading the agent:
 
@@ -100,23 +99,8 @@ window.inventrAgent.render({
   collapse: true,
   dev: true,
   id: "yourid",
-  render: false, // Set to true when you want to render
 });
 ```
-
-<!-- ### addActionCallback(action, callback, data)
-
-Registers a callback function for a specific action. The `action` is a string that specifies the action, and the `callback` is a function that is called when the action is received. The function also accepts an optional `data` object that is sent to the server when the callback is registered. The function returns an object with a `remove` method that can be used to remove the callback.
-
-Example:
-
-```javascript
-const callback = window.inventrAgent.addActionCallback('action', function(data) {
-  console.log('Received action with data:', data);
-});
-// To remove the callback:
-callback.remove();
-``` -->
 
 ### setActionAccessToken(token)
 
