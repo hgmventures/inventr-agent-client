@@ -75,16 +75,8 @@ Registers a listener for a specific action. The `actionName` is a string that sp
 
 ```javascript
 // Add an action listener for the DELETE_WORKSPACE action
-window.inventrAgent.addActionListener("DELETE_WORKSPACE", (workspace) => {
-  // Custom code to handle the DELETE_WORKSPACE action
-  console.log("DELETE_WORKSPACE", workspaces.name, workspaces.value);
-});
-// Add an action listener for the DELETE_WORKSPACE action
-window.inventrAgent.addActionListener("LIST_WORKSPACES", (workspaces) => {
-  // Custom code to handle the LIST_WORKSPACES action
-  workspaces.forEach((workspace) =>
-    console.log("LIST_WORKSPACES", workspace.name, workspace.value)
-  )
+window.inventrAgent.addActionListener("DELETE_USER", (user) => {
+  console.log("DELETE_USER", user.name, user.value);
 });
 ```
 
