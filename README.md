@@ -236,7 +236,7 @@ app.use("/agent/action", async (req, res) => {
         return res.status(401).send("Unauthorized");
       ret.success = true;
       ret.value = await fetchWorkspace(
-        { id: value.id, userId: tokenVals.userId },
+        { id: value.id, userIds: tokenVals.userId },
         { fields: ["id", "name", "description", "active"] }
       );
       break;
@@ -245,7 +245,7 @@ app.use("/agent/action", async (req, res) => {
       if (!checkUserAuth(tokenVals.userId, "workspace", "update"))
         return res.status(401).send("Unauthorized");
       ret.success = await updateWorkspace(
-        { id: value.id, userId: tokenVals.userId },
+        { id: value.id, userIds: tokenVals.userId },
         {
           name: value.name,
           description: value.description,
@@ -259,9 +259,10 @@ app.use("/agent/action", async (req, res) => {
       if (!checkUserAuth(tokenVals.userId, "workspace", "create"))
         return res.status(401).send("Unauthorized");
       const workspace = await createWorkspace({
-        userId: tokenVals.userId,
+        userIds: [tokenVals.userId],
         name: value.name,
         description: value.description,
+        active: value.active,
       });
       ret.success = workspace ? true : false;
       ret.value = { name: workspace.name, id: workspace.id };
@@ -272,7 +273,7 @@ app.use("/agent/action", async (req, res) => {
         return res.status(401).send("Unauthorized");
       ret.success = await deleteWorkspace({
         id: value.id,
-        userId: tokenVals.userId,
+        userIds: tokenVals.userId,
       });
       ret.value = { name: value.name, id: value.id };
       break;
@@ -324,3 +325,4 @@ app.listen(port, () => {
 - The token is used to authenticate and authorize the actions performed by the client on the server.
 
 This setup ensures that only authorized actions are performed and that the actions are securely authenticated using the provided token.
+v
