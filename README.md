@@ -67,9 +67,8 @@ To ensure that the `window.inventrAgent` object is available before using it, yo
 - **Load Event Listener**: The `load` event listener waits for the script to fully load before using `window.inventrAgent`.
 - **Render Method**: The `render` method is called inside the `load` event listener to ensure that the agent is rendered only after the script is loaded.
 
-## Using the inventrAgent Programmatically in JavaScript
+## Using the inventrAgent in JavaScript
 
-Using the inventrAgent Programmatically in JavaScript
 The inventrAgent provides a set of methods that allow you to integrate and control the chatbot interface within your web application. This section describes how to use these methods to render the chatbot and handle action callbacks.
 
 ### Methods
